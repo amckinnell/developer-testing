@@ -21,9 +21,10 @@ class GildedRose
   def perform_inventory_rollover(item)
     item.sell_in -= 1
 
-    if item.name == 'Aged Brie'
+    case item.name
+    when 'Aged Brie'
       increase_quality(item)
-    elsif item.name == 'Backstage passes to a TAFKAL80ETC concert'
+    when 'Backstage passes to a TAFKAL80ETC concert'
       increase_quality(item)
       increase_quality(item) if item.sell_in < 10
       increase_quality(item) if item.sell_in < 5
@@ -35,9 +36,10 @@ class GildedRose
   def perform_inventory_expiration(item)
     return unless expired?(item)
 
-    if item.name == 'Aged Brie'
+    case item.name
+    when 'Aged Brie'
       increase_quality(item)
-    elsif item.name == 'Backstage passes to a TAFKAL80ETC concert'
+    when 'Backstage passes to a TAFKAL80ETC concert'
       writeoff(item)
     else
       decrease_quality(item)
