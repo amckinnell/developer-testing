@@ -15,7 +15,7 @@ class GildedRose
     return if item.name == 'Sulfuras, Hand of Ragnaros'
 
     perform_inventory_rollover(item)
-    perform_expiration(item)
+    perform_inventory_expiration(item)
   end
 
   def perform_inventory_rollover(item)
@@ -32,7 +32,7 @@ class GildedRose
     end
   end
 
-  def perform_expiration(item)
+  def perform_inventory_expiration(item)
     return unless expired?(item)
 
     if item.name == 'Aged Brie'
