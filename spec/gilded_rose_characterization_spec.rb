@@ -8,14 +8,24 @@ describe GildedRose do
   it 'knows how to update quality for items' do
     subject = GildedRose.new(items)
 
-    subject.update_quality
-    expect(subject.items[0].to_s).to eq('Mail Armour, 9, 19')
-    expect(subject.items[1].to_s).to eq('Aged Brie, 3, 10')
-
+    characterization = []
 
     subject.update_quality
-    expect(subject.items[0].to_s).to eq('Mail Armour, 8, 18')
-    expect(subject.items[1].to_s).to eq('Aged Brie, 2, 11')
+    characterization << subject.items[0].to_s
+    characterization << subject.items[1].to_s
+
+    subject.update_quality
+    characterization << subject.items[0].to_s
+    characterization << subject.items[1].to_s
+
+    expected = [
+      'Mail Armour, 9, 19',
+      'Aged Brie, 3, 10',
+      'Mail Armour, 8, 18',
+      'Aged Brie, 2, 11'
+    ]
+
+    expect(characterization).to eq(expected)
   end
 
 end
@@ -30,4 +40,3 @@ def items
 
   item_attributes.map { |args| Item.new(*args) }
 end
-
