@@ -42,7 +42,7 @@ class GildedRose
   end
 
   def decrease_quality(item)
-    item.quality -= 1 if item.quality > 0
+    item.quality -= 1 if 0 < item.quality
   end
 
   def increase_quality(item)
