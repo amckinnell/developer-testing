@@ -10,11 +10,11 @@ class GildedRose
   end
 
   def increase_item_quality(item)
+    return if item.name == 'Sulfuras, Hand of Ragnaros'
+
     if item.name != 'Aged Brie' and item.name != 'Backstage passes to a TAFKAL80ETC concert'
       if item.quality > 0
-        if item.name != 'Sulfuras, Hand of Ragnaros'
-          item.quality = item.quality - 1
-        end
+        item.quality = item.quality - 1
       end
     else
       if item.quality < 50
@@ -33,16 +33,14 @@ class GildedRose
         end
       end
     end
-    if item.name != 'Sulfuras, Hand of Ragnaros'
-      item.sell_in = item.sell_in - 1
-    end
+
+    item.sell_in = item.sell_in - 1
+
     if item.sell_in < 0
       if item.name != 'Aged Brie'
         if item.name != 'Backstage passes to a TAFKAL80ETC concert'
           if item.quality > 0
-            if item.name != 'Sulfuras, Hand of Ragnaros'
-              item.quality = item.quality - 1
-            end
+            item.quality = item.quality - 1
           end
         else
           item.quality = item.quality - item.quality
