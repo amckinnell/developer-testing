@@ -1,4 +1,5 @@
 require 'rspec'
+require 'approvals/rspec'
 
 require_relative '../lib/gilded_rose'
 require_relative '../lib/item'
@@ -8,9 +9,7 @@ describe GildedRose do
   it 'knows how to update quality for items' do
     subject = GildedRose.new(items)
 
-    characterization = characterize(subject, 20)
-
-    expect(characterization).to eq(expected)
+    verify { characterize(subject, 20) }
   end
 
 end
@@ -34,15 +33,12 @@ end
 def characterize(subject, days)
   characterization = []
 
-  (1..days).each do
+  (1..days).each_with_index do |day|
     subject.update_quality
 
-    characterization.concat(subject.items.map(&:to_s))
+    characterization << "Day #{day} of #{days}"
+    subject.items.each { |item| characterization << "  #{item.to_s}" }
   end
 
-  Digest::SHA2.hexdigest(characterization.join)
-end
-
-def expected()
-  '1768fa473f323772588a8978f6e6e198d2cefee256ba13eab4018717ea78ea0c'
+  characterization.join("\n")
 end

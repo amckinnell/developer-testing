@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Approval testing
+gem 'approvals'
+
 # Code quality metrics
 gem 'flog'
 

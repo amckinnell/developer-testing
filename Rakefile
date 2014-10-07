@@ -17,3 +17,22 @@ desc 'Run mutation testing to assess the characterization'
 task :mutate do
   system 'mutant --include lib --require gilded_rose --use rspec GildedRose'
 end
+
+desc 'Approve the received characterization'
+task :approve do
+  mv received, approved
+end
+
+private
+
+def received
+  characterization_filename :received
+end
+
+def approved
+  characterization_filename :approved
+end
+
+def characterization_filename(status)
+  "spec/fixtures/approvals/gildedrose/knows_how_to_update_quality_for_items.#{status}.txt"
+end
