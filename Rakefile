@@ -12,3 +12,8 @@ desc 'Highlight source code from the clipboard back onto the clipboard (suitable
 task :pages do
   system 'pbpaste | highlight --out-format rtf --font-size 10 --font Menlo --src-lang ruby --line-numbers | pbcopy'
 end
+
+desc 'Run mutation testing to assess the characterization'
+task :mutate do
+  system 'mutant --include lib --require gilded_rose --use rspec GildedRose'
+end
