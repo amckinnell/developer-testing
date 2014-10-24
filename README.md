@@ -11,8 +11,6 @@ Your mission is the same as in the original Gilded Rose Kata, but if you find it
 
 
 ##Setup
-___________
-
 
 Here are the steps to get you started with the repo. We assume, naturally, that you have a working development machine with Ruby 1.8 or better on it. At Ryatta Group we use rbenv, and so we've included some optional elements - just skip them if you're using rvm or are not versioning your Ruby.
 
