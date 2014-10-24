@@ -10,7 +10,7 @@ We've restructured the repo to provide a quick-start introduction to refactoring
 Your mission is the same as in the original Gilded Rose Kata, but if you find it a bit to easy, we've added some stretch goals too.  Have fun!  The rules are in the wiki.
 
 
-Setup
+##Setup
 ___________
 
 
