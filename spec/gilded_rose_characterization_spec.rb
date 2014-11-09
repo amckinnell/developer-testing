@@ -10,13 +10,6 @@ describe GildedRose do
 
     characterization = characterize(subject, 2)
 
-    expected = [
-      'Mail Armour, 9, 19',
-      'Aged Brie, 3, 10',
-      'Mail Armour, 8, 18',
-      'Aged Brie, 2, 11'
-    ]
-
     expect(characterization).to eq(expected)
   end
 
@@ -43,4 +36,13 @@ def characterize(subject, days)
   end
 
   characterization
+end
+
+def expected
+  [
+    'Mail Armour, 9, 19',
+    'Aged Brie, 3, 10',
+    'Mail Armour, 8, 18',
+    'Aged Brie, 2, 11'
+  ]
 end
