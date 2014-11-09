@@ -8,15 +8,7 @@ describe GildedRose do
   it 'knows how to update quality for items' do
     subject = GildedRose.new(items)
 
-    characterization = []
-
-    subject.update_quality
-    characterization << subject.items[0].to_s
-    characterization << subject.items[1].to_s
-
-    subject.update_quality
-    characterization << subject.items[0].to_s
-    characterization << subject.items[1].to_s
+    characterization = characterize(subject, 2)
 
     expected = [
       'Mail Armour, 9, 19',
@@ -39,4 +31,16 @@ def items
   ]
 
   item_attributes.map { |args| Item.new(*args) }
+end
+
+def characterize(subject, days)
+  characterization = []
+
+  (1..days).each do
+    subject.update_quality
+
+    subject.items.each { |item| characterization << item.to_s }
+  end
+
+  characterization
 end
