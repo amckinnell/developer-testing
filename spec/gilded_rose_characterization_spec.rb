@@ -33,19 +33,12 @@ def characterize(subject, days)
   (1..days).each do
     subject.update_quality
 
-    subject.items.each { |item| characterization << item.to_s }
+    characterization.concat(subject.items.map(&:to_s))
   end
 
-  characterization
+  Digest::SHA2.hexdigest(characterization.join)
 end
 
-def expected
-  [
-    'Mail Armour, 9, 19',
-    'Aged Brie, 3, 10',
-    'Backstage passes to a TAFKAL80ETC concert, 14, 18',
-    'Mail Armour, 8, 18',
-    'Aged Brie, 2, 11',
-    'Backstage passes to a TAFKAL80ETC concert, 13, 19',
-  ]
+def expected()
+  'c869cb44cd36e1553d18178bbddf8ef838937cc11551d958277a43b1adc8e8e5'
 end
