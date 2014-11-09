@@ -20,7 +20,8 @@ private
 def items
   item_attributes = [
     ['Mail Armour', 10, 20],
-    ['Aged Brie', 4, 9]
+    ['Aged Brie', 4, 9],
+    ['Backstage passes to a TAFKAL80ETC concert', 15, 17]
   ]
 
   item_attributes.map { |args| Item.new(*args) }
@@ -42,7 +43,9 @@ def expected
   [
     'Mail Armour, 9, 19',
     'Aged Brie, 3, 10',
+    'Backstage passes to a TAFKAL80ETC concert, 14, 18',
     'Mail Armour, 8, 18',
-    'Aged Brie, 2, 11'
+    'Aged Brie, 2, 11',
+    'Backstage passes to a TAFKAL80ETC concert, 13, 19',
   ]
 end
