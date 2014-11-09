@@ -6,10 +6,6 @@ require_relative '../lib/item'
 describe GildedRose do
 
   it 'knows how to update quality for items' do
-    items = [
-      Item.new('Mail Armour', 10, 20),
-      Item.new('Aged Brie', 4, 9)
-    ]
     subject = GildedRose.new(items)
 
     subject.update_quality
@@ -23,3 +19,15 @@ describe GildedRose do
   end
 
 end
+
+private
+
+def items
+  item_attributes = [
+    ['Mail Armour', 10, 20],
+    ['Aged Brie', 4, 9]
+  ]
+
+  item_attributes.map { |args| Item.new(*args) }
+end
+
