@@ -3,6 +3,11 @@ task :flog do
   system 'flog -agme lib/gilded_rose.rb | grep -v lib/gilded_rose | tee /dev/tty | pbcopy'
 end
 
+desc 'Run mutation testing to assess the characterization'
+task :mutate do
+  system 'mutant --include lib --require gilded_rose --use rspec GildedRose'
+end
+
 desc 'Highlight source code from the clipboard back onto the clipboard (suitable for Keynote)'
 task :keynote do
   system 'pbpaste | highlight --out-format rtf --font-size 24 --font Menlo --plug-in highlight/rspec.lua --config-file highlight/twilight.theme --style twilight --src-lang ruby | pbcopy'
