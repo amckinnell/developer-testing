@@ -35,7 +35,7 @@ class GildedRose
         if item.name != 'Backstage passes to a TAFKAL80ETC concert'
           decrease_quality(item)
         else
-          item.quality = item.quality - item.quality
+          writeoff(item)
         end
       else
         increase_quality(item)
@@ -54,4 +54,9 @@ class GildedRose
       item.quality += 1
     end
   end
+
+  def writeoff(item)
+    item.quality = 0
+  end
+
 end
