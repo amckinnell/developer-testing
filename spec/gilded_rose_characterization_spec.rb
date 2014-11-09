@@ -21,7 +21,8 @@ def items
   item_attributes = [
     ['Mail Armour', 10, 20],
     ['Aged Brie', 4, 9],
-    ['Backstage passes to a TAFKAL80ETC concert', 15, 17]
+    ['Backstage passes to a TAFKAL80ETC concert', 15, 17],
+    ['Sulfuras, Hand of Ragnaros', -1, 80]
   ]
 
   item_attributes.map { |args| Item.new(*args) }
@@ -40,5 +41,5 @@ def characterize(subject, days)
 end
 
 def expected()
-  'fb61e7fdfffcba653fecdc2707c544dd616523294b6c9ae0512470a974b1561e'
+  'fb65afd4aa1ce8b71cddd120109ec1b61ffa37b1f0da2cab2ce4828e101ee433'
 end
