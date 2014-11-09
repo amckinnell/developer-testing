@@ -6,3 +6,4 @@ gem 'flog'
 # Project automation
 gem 'rake'
 gem 'rspec', '~> 2.14.0'
+gem 'simplecov'
