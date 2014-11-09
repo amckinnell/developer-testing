@@ -16,9 +16,7 @@ class GildedRose
 
     item.sell_in -= 1
 
-    if item.name != 'Aged Brie' and item.name != 'Backstage passes to a TAFKAL80ETC concert'
-      decrease_quality(item)
-    else
+    if item.name == 'Aged Brie' || item.name == 'Backstage passes to a TAFKAL80ETC concert'
       increase_quality(item)
       if item.name == 'Backstage passes to a TAFKAL80ETC concert'
         if item.sell_in < 10
@@ -28,17 +26,19 @@ class GildedRose
           increase_quality(item)
         end
       end
+    else
+      decrease_quality(item)
     end
 
     if expired?(item)
-      if item.name != 'Aged Brie'
-        if item.name != 'Backstage passes to a TAFKAL80ETC concert'
-          decrease_quality(item)
-        else
-          writeoff(item)
-        end
-      else
+      if item.name == 'Aged Brie'
         increase_quality(item)
+      else
+        if item.name == 'Backstage passes to a TAFKAL80ETC concert'
+          writeoff(item)
+        else
+          decrease_quality(item)
+        end
       end
     end
   end
