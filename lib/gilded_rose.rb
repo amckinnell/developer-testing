@@ -6,10 +6,12 @@ class GildedRose
   end
 
   def update_quality
-    @items.each { |item| increase_item_quality(item) }
+    @items.each { |item| update_item_quality(item) }
   end
 
-  def increase_item_quality(item)
+  private
+
+  def update_item_quality(item)
     return if item.name == 'Sulfuras, Hand of Ragnaros'
 
     item.sell_in = item.sell_in - 1
@@ -19,19 +21,13 @@ class GildedRose
         item.quality = item.quality - 1
       end
     else
-      if item.quality < 50
-        item.quality = item.quality + 1
-        if item.name == 'Backstage passes to a TAFKAL80ETC concert'
-          if item.sell_in < 10
-            if item.quality < 50
-              item.quality = item.quality + 1
-            end
-          end
-          if item.sell_in < 5
-            if item.quality < 50
-              item.quality = item.quality + 1
-            end
-          end
+      increase_quality(item)
+      if item.name == 'Backstage passes to a TAFKAL80ETC concert'
+        if item.sell_in < 10
+          increase_quality(item)
+        end
+        if item.sell_in < 5
+          increase_quality(item)
         end
       end
     end
@@ -46,10 +42,14 @@ class GildedRose
           item.quality = item.quality - item.quality
         end
       else
-        if item.quality < 50
-          item.quality = item.quality + 1
-        end
+        increase_quality(item)
       end
+    end
+  end
+
+  def increase_quality(item)
+    if item.quality < 50
+      item.quality = item.quality + 1
     end
   end
 end
