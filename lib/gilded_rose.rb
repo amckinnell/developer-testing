@@ -14,6 +14,11 @@ class GildedRose
   def update_item_quality(item)
     return if item.name == 'Sulfuras, Hand of Ragnaros'
 
+    perform_inventory_rollover(item)
+    perform_expiration(item)
+  end
+
+  def perform_inventory_rollover(item)
     item.sell_in -= 1
 
     if item.name == 'Aged Brie'
@@ -25,7 +30,9 @@ class GildedRose
     else
       decrease_quality(item)
     end
+  end
 
+  def perform_expiration(item)
     if expired?(item)
       if item.name == 'Aged Brie'
         increase_quality(item)
