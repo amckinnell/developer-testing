@@ -30,7 +30,7 @@ class GildedRose
       end
     end
 
-    if item.sell_in < 0
+    if expired?(item)
       if item.name != 'Aged Brie'
         if item.name != 'Backstage passes to a TAFKAL80ETC concert'
           decrease_quality(item)
@@ -41,6 +41,10 @@ class GildedRose
         increase_quality(item)
       end
     end
+  end
+
+  def expired?(item)
+    item.sell_in < 0
   end
 
   def decrease_quality(item)
