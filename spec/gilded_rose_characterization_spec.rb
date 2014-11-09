@@ -10,7 +10,7 @@ describe GildedRose do
     subject = GildedRose.new(items)
 
     subject.update_quality
-    expect(subject.items[0].to_s).to eq(nil)
+    expect(subject.items[0].to_s).to eq('Mail Armour, 9, 19')
   end
 
 end
