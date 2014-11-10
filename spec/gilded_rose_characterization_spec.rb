@@ -24,7 +24,8 @@ def items
     ['Aged Brie', 1, 49],
     ['Backstage passes to a TAFKAL80ETC concert', 15, 17],
     ['Backstage passes to a TAFKAL80ETC concert', 5, 49],
-    ['Sulfuras, Hand of Ragnaros', -1, 80]
+    ['Sulfuras, Hand of Ragnaros', -1, 80],
+    ['Conjured Mana', 13, 50]
   ]
 
   item_attributes.map { |args| Item.new(*args) }
