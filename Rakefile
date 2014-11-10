@@ -17,3 +17,22 @@ desc 'Highlight source code from the clipboard back onto the clipboard (suitable
 task :pages do
   system 'pbpaste | highlight --out-format rtf --font-size 10 --font Menlo --src-lang ruby --line-numbers | pbcopy'
 end
+
+desc 'Approve the received characterization'
+task :approve do
+  mv received, approved
+end
+
+private
+
+def received
+  characterization_filename :received
+end
+
+def approved
+  characterization_filename :approved
+end
+
+def characterization_filename(status)
+  "spec/fixtures/approvals/gildedrose/knows_how_to_update_quality_for_items.#{status}.txt"
+end
