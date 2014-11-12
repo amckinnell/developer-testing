@@ -25,9 +25,12 @@ class GildedRose
     when 'Aged Brie'
       item.increase_quality
     when 'Backstage passes to a TAFKAL80ETC concert'
-      item.increase_quality
-      item.increase_quality if item.sell_in < 10
-      item.increase_quality if item.sell_in < 5
+      amount = case item.sell_in
+      when (0..4) then 3
+      when (5..9) then 2
+      else 1
+      end
+      item.increase_quality amount
     when 'Conjured Mana'
       item.decrease_quality 2
     else
