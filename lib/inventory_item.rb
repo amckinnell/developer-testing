@@ -19,11 +19,11 @@ class InventoryItem
     @item.sell_in -= 1
   end
 
-  def decrease_quality(delta = 1)
+  def decrease_quality(delta)
     @item.quality = [@item.quality - delta, 0].max
   end
 
-  def increase_quality(delta = 1)
+  def increase_quality(delta)
     @item.quality = [@item.quality + delta, 50].min
   end
 
@@ -43,11 +43,11 @@ class InventoryItem
 
     def do_perform_inventory_rollover
       rollover
-      increase_quality
+      increase_quality 1
     end
 
     def do_perform_inventory_expiration
-      increase_quality
+      increase_quality 1
     end
 
   end
@@ -104,11 +104,11 @@ class InventoryItem
 
     def do_perform_inventory_rollover
       rollover
-      decrease_quality
+      decrease_quality 1
     end
 
     def do_perform_inventory_expiration
-      decrease_quality
+      decrease_quality 1
     end
 
   end

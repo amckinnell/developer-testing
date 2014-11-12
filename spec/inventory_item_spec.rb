@@ -8,8 +8,8 @@ describe InventoryItem do
   context 'increase quality' do
     subject { InventoryItem.new(Item.new('+5 Dexterity Vest', 10, 20)) }
 
-    it 'default delta is 1' do
-      subject.increase_quality
+    it 'supports a delta of 1' do
+      subject.increase_quality 1
       expect(subject.quality).to eq(21)
     end
 
@@ -27,8 +27,8 @@ describe InventoryItem do
   context 'decrease quality' do
     subject { InventoryItem.new(Item.new('+5 Dexterity Vest', 10, 20)) }
 
-    it 'default delta is 1' do
-      subject.decrease_quality
+    it 'supports delta is 1' do
+      subject.decrease_quality 1
       expect(subject.quality).to eq(19)
     end
 
