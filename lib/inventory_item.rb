@@ -39,25 +39,6 @@ class InventoryItem
     do_perform_inventory_expiration if expired?
   end
 
-  class InventoryItemFactory
-
-    def self.create(item)
-      case item.name
-      when 'Aged Brie'
-        AgedBrie.new(item)
-      when 'Backstage passes to a TAFKAL80ETC concert'
-        BackstagePass.new(item)
-      when 'Conjured Mana'
-        ConjuredItem.new(item)
-      when 'Sulfuras, Hand of Ragnaros'
-        LegendaryItem.new(item)
-      else
-        StandardItem.new(item)
-      end
-    end
-
-  end
-
   class AgedBrie < InventoryItem;
 
     def do_perform_inventory_rollover
@@ -128,6 +109,22 @@ class InventoryItem
 
     def do_perform_inventory_expiration
       decrease_quality
+    end
+
+  end
+
+  class InventoryItemFactory
+
+    INVENTORY_ITEMS = {
+      'Aged Brie' => AgedBrie,
+      'Backstage passes to a TAFKAL80ETC concert' => BackstagePass,
+      'Conjured Mana' => ConjuredItem,
+      'Sulfuras, Hand of Ragnaros' => LegendaryItem
+    }
+
+    def self.create(item)
+      item_class = INVENTORY_ITEMS.fetch(item.name, StandardItem)
+      item_class.method(:new).call(item)
     end
 
   end
