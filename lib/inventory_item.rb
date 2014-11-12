@@ -3,6 +3,10 @@ class InventoryItem
 
   def_delegators :@item, :name, :quality, :sell_in
 
+  def self.create(item)
+    InventoryItem.new(item)
+  end
+
   def initialize(item)
     @item = item
   end

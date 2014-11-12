@@ -6,7 +6,7 @@ class GildedRose
   end
 
   def update_quality
-    @items.each { |item| update_item_quality(InventoryItem.new(item)) }
+    @items.each { |item| update_item_quality(InventoryItem.create(item)) }
   end
 
   private
