@@ -23,16 +23,16 @@ class GildedRose
 
     case item.name
     when 'Aged Brie'
-      increase_quality(item)
+      item.increase_quality
     when 'Backstage passes to a TAFKAL80ETC concert'
-      increase_quality(item)
-      increase_quality(item) if item.sell_in < 10
-      increase_quality(item) if item.sell_in < 5
+      item.increase_quality
+      item.increase_quality if item.sell_in < 10
+      item.increase_quality if item.sell_in < 5
     when 'Conjured Mana'
-      decrease_quality(item)
-      decrease_quality(item)
+      item.decrease_quality
+      item.decrease_quality
     else
-      decrease_quality(item)
+      item.decrease_quality
     end
   end
 
@@ -41,14 +41,14 @@ class GildedRose
 
     case item.name
     when 'Aged Brie'
-      increase_quality(item)
+      item.increase_quality
     when 'Backstage passes to a TAFKAL80ETC concert'
-      writeoff(item)
+      item.writeoff
     when 'Conjured Mana'
-      decrease_quality(item)
-      decrease_quality(item)
+      item.decrease_quality
+      item.decrease_quality
     else
-      decrease_quality(item)
+      item.decrease_quality
     end
   end
 
@@ -56,16 +56,5 @@ class GildedRose
     item.sell_in < 0
   end
 
-  def decrease_quality(item)
-    item.decrease_quality
-  end
-
-  def increase_quality(item)
-    item.increase_quality
-  end
-
-  def writeoff(item)
-    item.writeoff
-  end
 
 end
