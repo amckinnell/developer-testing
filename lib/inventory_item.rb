@@ -32,6 +32,7 @@ class InventoryItem
   end
 
   def inventory_rollover
+    rollover
     do_inventory_rollover
   end
 
@@ -42,7 +43,6 @@ class InventoryItem
   class AgedBrie < InventoryItem;
 
     def do_inventory_rollover
-      rollover
       increase_quality 1
     end
 
@@ -55,7 +55,6 @@ class InventoryItem
   class BackstagePass < InventoryItem;
 
     def do_inventory_rollover
-      rollover
       increase_quality amount
     end
 
@@ -78,7 +77,6 @@ class InventoryItem
   class ConjuredItem < InventoryItem;
 
     def do_inventory_rollover
-      rollover
       decrease_quality 2
     end
 
@@ -98,12 +96,15 @@ class InventoryItem
       # Do nothing
     end
 
+    def rollover
+      # Do nothing
+    end
+
   end
 
   class StandardItem < InventoryItem;
 
     def do_inventory_rollover
-      rollover
       decrease_quality 1
     end
 
