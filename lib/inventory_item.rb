@@ -15,12 +15,12 @@ class InventoryItem
     @item.sell_in -= 1
   end
 
-  def decrease_quality
-    @item.quality -= 1 if 0 < @item.quality
+  def decrease_quality(delta = 1)
+    @item.quality -= delta if 0 < @item.quality
   end
 
-  def increase_quality
-    @item.quality += 1 if @item.quality < 50
+  def increase_quality(delta = 1)
+    @item.quality += delta if @item.quality < 50
   end
 
   def writeoff
