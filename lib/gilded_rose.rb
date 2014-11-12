@@ -37,7 +37,7 @@ class GildedRose
   end
 
   def perform_inventory_expiration(item)
-    return unless expired?(item)
+    return unless item.expired?
 
     case item.name
     when 'Aged Brie'
@@ -50,10 +50,6 @@ class GildedRose
     else
       item.decrease_quality
     end
-  end
-
-  def expired?(item)
-    item.expired?
   end
 
 end
