@@ -47,7 +47,7 @@ class InventoryItem
   end
 
   def perform_inventory_expiration
-    do_perform_inventory_expiration
+    do_perform_inventory_expiration if expired?
   end
 
   class AgedBrie < InventoryItem;
@@ -58,7 +58,7 @@ class InventoryItem
     end
 
     def do_perform_inventory_expiration
-      increase_quality if expired?
+      increase_quality
     end
 
   end
@@ -71,7 +71,7 @@ class InventoryItem
     end
 
     def do_perform_inventory_expiration
-      writeoff if expired?
+      writeoff
     end
 
     private
@@ -94,7 +94,7 @@ class InventoryItem
     end
 
     def do_perform_inventory_expiration
-      decrease_quality 2 if expired?
+      decrease_quality 2
     end
 
   end
@@ -119,7 +119,7 @@ class InventoryItem
     end
 
     def do_perform_inventory_expiration
-      decrease_quality if expired?
+      decrease_quality
     end
 
   end
