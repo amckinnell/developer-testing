@@ -19,7 +19,7 @@ class GildedRose
   end
 
   def perform_inventory_rollover(item)
-    item.sell_in -= 1
+    item.rollover
 
     case item.name
     when 'Aged Brie'

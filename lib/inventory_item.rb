@@ -1,7 +1,7 @@
 class InventoryItem
   extend Forwardable
 
-  def_delegators :@item, :name, :sell_in, :sell_in=
+  def_delegators :@item, :name, :sell_in
 
   def initialize(item)
     @item = item
@@ -9,6 +9,10 @@ class InventoryItem
 
   def expired?
     @item.sell_in < 0
+  end
+
+  def rollover
+    @item.sell_in -= 1
   end
 
   def decrease_quality
