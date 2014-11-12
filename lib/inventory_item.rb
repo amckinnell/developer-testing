@@ -117,14 +117,14 @@ class InventoryItem
   class InventoryItemFactory
 
     INVENTORY_ITEMS = {
-      'Aged Brie' => AgedBrie,
-      'Backstage passes to a TAFKAL80ETC concert' => BackstagePass,
-      'Conjured Mana' => ConjuredItem,
-      'Sulfuras, Hand of Ragnaros' => LegendaryItem
+      :'Aged Brie' => AgedBrie,
+      :'Backstage passes to a TAFKAL80ETC concert' => BackstagePass,
+      :'Conjured Mana' => ConjuredItem,
+      :'Sulfuras, Hand of Ragnaros' => LegendaryItem
     }
 
     def self.create(item)
-      item_class = INVENTORY_ITEMS.fetch(item.name, StandardItem)
+      item_class = INVENTORY_ITEMS.fetch(item.name.to_sym, StandardItem)
       item_class.method(:new).call(item)
     end
 
