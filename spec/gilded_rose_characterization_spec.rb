@@ -2,6 +2,7 @@ require 'rspec'
 require 'approvals/rspec'
 
 require_relative '../lib/gilded_rose'
+require_relative '../lib/inventory_item'
 require_relative '../lib/item'
 
 describe GildedRose do

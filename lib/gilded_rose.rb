@@ -6,7 +6,7 @@ class GildedRose
   end
 
   def update_quality
-    @items.each { |item| update_item_quality(item) }
+    @items.each { |item| update_item_quality(InventoryItem.new(item)) }
   end
 
   private
@@ -19,53 +19,38 @@ class GildedRose
   end
 
   def perform_inventory_rollover(item)
-    item.sell_in -= 1
+    item.rollover
 
     case item.name
     when 'Aged Brie'
-      increase_quality(item)
+      item.increase_quality
     when 'Backstage passes to a TAFKAL80ETC concert'
-      increase_quality(item)
-      increase_quality(item) if item.sell_in < 10
-      increase_quality(item) if item.sell_in < 5
+      amount = case item.sell_in
+      when (0..4) then 3
+      when (5..9) then 2
+      else 1
+      end
+      item.increase_quality amount
     when 'Conjured Mana'
-      decrease_quality(item)
-      decrease_quality(item)
+      item.decrease_quality 2
     else
-      decrease_quality(item)
+      item.decrease_quality
     end
   end
 
   def perform_inventory_expiration(item)
-    return unless expired?(item)
+    return unless item.expired?
 
     case item.name
     when 'Aged Brie'
-      increase_quality(item)
+      item.increase_quality
     when 'Backstage passes to a TAFKAL80ETC concert'
-      writeoff(item)
+      item.writeoff
     when 'Conjured Mana'
-      decrease_quality(item)
-      decrease_quality(item)
+      item.decrease_quality 2
     else
-      decrease_quality(item)
+      item.decrease_quality
     end
-  end
-
-  def expired?(item)
-    item.sell_in < 0
-  end
-
-  def decrease_quality(item)
-    item.quality -= 1 if 0 < item.quality
-  end
-
-  def increase_quality(item)
-    item.quality += 1 if item.quality < 50
-  end
-
-  def writeoff(item)
-    item.quality = 0
   end
 
 end
