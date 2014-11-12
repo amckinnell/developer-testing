@@ -57,15 +57,15 @@ class GildedRose
   end
 
   def decrease_quality(item)
-    item.quality -= 1 if 0 < item.quality
+    item.decrease_quality
   end
 
   def increase_quality(item)
-    item.quality += 1 if item.quality < 50
+    item.increase_quality
   end
 
   def writeoff(item)
-    item.quality = 0
+    item.writeoff
   end
 
 end
