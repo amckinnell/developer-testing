@@ -4,7 +4,18 @@ class InventoryItem
   def_delegators :@item, :name, :quality, :sell_in
 
   def self.create(item)
-    InventoryItem.new(item)
+    case item.name
+    when 'Aged Brie'
+      AgedBrie.new(item)
+    when 'Backstage passes to a TAFKAL80ETC concert'
+      BackstagePass.new(item)
+    when 'Conjured Mana'
+      ConjuredItem.new(item)
+    when 'Sulfuras, Hand of Ragnaros'
+      LegendaryItem.new(item)
+    else
+      StandardItem.new(item)
+      end
   end
 
   def initialize(item)
@@ -69,5 +80,11 @@ class InventoryItem
       decrease_quality if expired?
     end
   end
+
+  class AgedBrie < InventoryItem; end
+  class BackstagePass < InventoryItem; end
+  class ConjuredItem < InventoryItem; end
+  class LegendaryItem < InventoryItem; end
+  class StandardItem < InventoryItem; end
 
 end
