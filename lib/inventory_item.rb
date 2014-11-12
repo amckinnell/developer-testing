@@ -4,18 +4,7 @@ class InventoryItem
   def_delegators :@item, :name, :quality, :sell_in
 
   def self.create(item)
-    case item.name
-    when 'Aged Brie'
-      AgedBrie.new(item)
-    when 'Backstage passes to a TAFKAL80ETC concert'
-      BackstagePass.new(item)
-    when 'Conjured Mana'
-      ConjuredItem.new(item)
-    when 'Sulfuras, Hand of Ragnaros'
-      LegendaryItem.new(item)
-    else
-      StandardItem.new(item)
-      end
+    InventoryItemFactory.create(item)
   end
 
   def initialize(item)
@@ -48,6 +37,25 @@ class InventoryItem
 
   def perform_inventory_expiration
     do_perform_inventory_expiration if expired?
+  end
+
+  class InventoryItemFactory
+
+    def self.create(item)
+      case item.name
+      when 'Aged Brie'
+        AgedBrie.new(item)
+      when 'Backstage passes to a TAFKAL80ETC concert'
+        BackstagePass.new(item)
+      when 'Conjured Mana'
+        ConjuredItem.new(item)
+      when 'Sulfuras, Hand of Ragnaros'
+        LegendaryItem.new(item)
+      else
+        StandardItem.new(item)
+      end
+    end
+
   end
 
   class AgedBrie < InventoryItem;
