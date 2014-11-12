@@ -7,6 +7,10 @@ class InventoryItem
     @item = item
   end
 
+  def expired?
+    @item.sell_in < 0
+  end
+
   def decrease_quality
     @item.quality -= 1 if 0 < @item.quality
   end

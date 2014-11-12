@@ -53,8 +53,7 @@ class GildedRose
   end
 
   def expired?(item)
-    item.sell_in < 0
+    item.expired?
   end
-
 
 end
