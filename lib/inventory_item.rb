@@ -43,48 +43,242 @@ class InventoryItem
   end
 
   def perform_inventory_rollover
-    case name
-    when 'Aged Brie'
-      rollover
-      increase_quality
-    when 'Backstage passes to a TAFKAL80ETC concert'
-      rollover
-      amount = case @item.sell_in
-      when (0..4) then 3
-      when (5..9) then 2
-      else 1
-      end
-      increase_quality amount
-    when 'Conjured Mana'
-      rollover
-      decrease_quality 2
-    when 'Sulfuras, Hand of Ragnaros'
-      # Do nothing
-    else
-      rollover
-      decrease_quality
-    end
+    do_perform_inventory_rollover
   end
 
   def perform_inventory_expiration
-    case name
-    when 'Aged Brie'
-      increase_quality if expired?
-    when 'Backstage passes to a TAFKAL80ETC concert'
-      writeoff if expired?
-    when 'Conjured Mana'
-      decrease_quality 2 if expired?
-    when 'Sulfuras, Hand of Ragnaros'
-      # Do nothing
-    else
-      decrease_quality if expired?
+    do_perform_inventory_expiration
+  end
+
+  class AgedBrie < InventoryItem;
+
+    def do_perform_inventory_rollover
+      case name
+      when 'Aged Brie'
+        rollover
+        increase_quality
+      when 'Backstage passes to a TAFKAL80ETC concert'
+        rollover
+        amount = case @item.sell_in
+        when (0..4) then
+          3
+        when (5..9) then
+          2
+        else
+          1
+        end
+        increase_quality amount
+      when 'Conjured Mana'
+        rollover
+        decrease_quality 2
+      when 'Sulfuras, Hand of Ragnaros'
+        # Do nothing
+      else
+        rollover
+        decrease_quality
+      end
+
+    end
+
+    def do_perform_inventory_expiration
+      case name
+      when 'Aged Brie'
+        increase_quality if expired?
+      when 'Backstage passes to a TAFKAL80ETC concert'
+        writeoff if expired?
+      when 'Conjured Mana'
+        decrease_quality 2 if expired?
+      when 'Sulfuras, Hand of Ragnaros'
+        # Do nothing
+      else
+        decrease_quality if expired?
+      end
     end
   end
 
-  class AgedBrie < InventoryItem; end
-  class BackstagePass < InventoryItem; end
-  class ConjuredItem < InventoryItem; end
-  class LegendaryItem < InventoryItem; end
-  class StandardItem < InventoryItem; end
+  class BackstagePass < InventoryItem;
+
+    def do_perform_inventory_rollover
+      case name
+      when 'Aged Brie'
+        rollover
+        increase_quality
+      when 'Backstage passes to a TAFKAL80ETC concert'
+        rollover
+        amount = case @item.sell_in
+        when (0..4) then
+          3
+        when (5..9) then
+          2
+        else
+          1
+        end
+        increase_quality amount
+      when 'Conjured Mana'
+        rollover
+        decrease_quality 2
+      when 'Sulfuras, Hand of Ragnaros'
+        # Do nothing
+      else
+        rollover
+        decrease_quality
+      end
+    end
+
+    def do_perform_inventory_expiration
+      case name
+      when 'Aged Brie'
+        increase_quality if expired?
+      when 'Backstage passes to a TAFKAL80ETC concert'
+        writeoff if expired?
+      when 'Conjured Mana'
+        decrease_quality 2 if expired?
+      when 'Sulfuras, Hand of Ragnaros'
+        # Do nothing
+      else
+        decrease_quality if expired?
+      end
+    end
+
+  end
+
+  class ConjuredItem < InventoryItem;
+
+    def do_perform_inventory_rollover
+      case name
+      when 'Aged Brie'
+        rollover
+        increase_quality
+      when 'Backstage passes to a TAFKAL80ETC concert'
+        rollover
+        amount = case @item.sell_in
+        when (0..4) then
+          3
+        when (5..9) then
+          2
+        else
+          1
+        end
+        increase_quality amount
+      when 'Conjured Mana'
+        rollover
+        decrease_quality 2
+      when 'Sulfuras, Hand of Ragnaros'
+        # Do nothing
+      else
+        rollover
+        decrease_quality
+      end
+    end
+
+    def do_perform_inventory_expiration
+
+      case name
+      when 'Aged Brie'
+        increase_quality if expired?
+      when 'Backstage passes to a TAFKAL80ETC concert'
+        writeoff if expired?
+      when 'Conjured Mana'
+        decrease_quality 2 if expired?
+      when 'Sulfuras, Hand of Ragnaros'
+        # Do nothing
+      else
+        decrease_quality if expired?
+      end
+    end
+
+  end
+
+  class LegendaryItem < InventoryItem;
+
+    def do_perform_inventory_rollover
+      case name
+      when 'Aged Brie'
+        rollover
+        increase_quality
+      when 'Backstage passes to a TAFKAL80ETC concert'
+        rollover
+        amount = case @item.sell_in
+        when (0..4) then
+          3
+        when (5..9) then
+          2
+        else
+          1
+        end
+        increase_quality amount
+      when 'Conjured Mana'
+        rollover
+        decrease_quality 2
+      when 'Sulfuras, Hand of Ragnaros'
+        # Do nothing
+      else
+        rollover
+        decrease_quality
+      end
+    end
+
+    def do_perform_inventory_expiration
+      case name
+      when 'Aged Brie'
+        increase_quality if expired?
+      when 'Backstage passes to a TAFKAL80ETC concert'
+        writeoff if expired?
+      when 'Conjured Mana'
+        decrease_quality 2 if expired?
+      when 'Sulfuras, Hand of Ragnaros'
+        # Do nothing
+      else
+        decrease_quality if expired?
+      end
+    end
+
+  end
+
+  class StandardItem < InventoryItem;
+
+    def do_perform_inventory_rollover
+      case name
+      when 'Aged Brie'
+        rollover
+        increase_quality
+      when 'Backstage passes to a TAFKAL80ETC concert'
+        rollover
+        amount = case @item.sell_in
+        when (0..4) then
+          3
+        when (5..9) then
+          2
+        else
+          1
+        end
+        increase_quality amount
+      when 'Conjured Mana'
+        rollover
+        decrease_quality 2
+      when 'Sulfuras, Hand of Ragnaros'
+        # Do nothing
+      else
+        rollover
+        decrease_quality
+      end
+    end
+
+    def do_perform_inventory_expiration
+      case name
+      when 'Aged Brie'
+        increase_quality if expired?
+      when 'Backstage passes to a TAFKAL80ETC concert'
+        writeoff if expired?
+      when 'Conjured Mana'
+        decrease_quality 2 if expired?
+      when 'Sulfuras, Hand of Ragnaros'
+        # Do nothing
+      else
+        decrease_quality if expired?
+      end
+    end
+
+  end
 
 end
