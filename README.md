@@ -8,18 +8,18 @@ The three testing techniques are:
 * [Mutation Testing](http://github.com/mbj/mutant)
 * [Approval Testing](http://github.com/kytrinyx/approvals)
 
+
 Refactoring Practice
 --------------------
 
-The Gilded Rose Kata is designed to give you practice at refactoring legacy code.
- 
 To practice your own refactoring supported by a hash-based characterization test:
 
-    `git checkout tags/ready_to_refactor -b practice_characterization`
+`git checkout tags/ready_to_refactor -b practice_characterization`
 
 To practice your own refactoring supported by an approval test:
 
-    `git checkout tags/ready_to_add_conjured_item -b practice_approval`
+`git checkout tags/ready_to_add_conjured_item -b practice_approval`
+
 
 My Refactoring
 --------------
