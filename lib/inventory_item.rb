@@ -31,22 +31,22 @@ class InventoryItem
     @item.quality = 0
   end
 
-  def perform_inventory_rollover
-    do_perform_inventory_rollover
+  def inventory_rollover
+    do_inventory_rollover
   end
 
-  def perform_inventory_expiration
-    do_perform_inventory_expiration if expired?
+  def inventory_expiration
+    do_inventory_expiration if expired?
   end
 
   class AgedBrie < InventoryItem;
 
-    def do_perform_inventory_rollover
+    def do_inventory_rollover
       rollover
       increase_quality 1
     end
 
-    def do_perform_inventory_expiration
+    def do_inventory_expiration
       increase_quality 1
     end
 
@@ -54,12 +54,12 @@ class InventoryItem
 
   class BackstagePass < InventoryItem;
 
-    def do_perform_inventory_rollover
+    def do_inventory_rollover
       rollover
       increase_quality amount
     end
 
-    def do_perform_inventory_expiration
+    def do_inventory_expiration
       writeoff
     end
 
@@ -77,12 +77,12 @@ class InventoryItem
 
   class ConjuredItem < InventoryItem;
 
-    def do_perform_inventory_rollover
+    def do_inventory_rollover
       rollover
       decrease_quality 2
     end
 
-    def do_perform_inventory_expiration
+    def do_inventory_expiration
       decrease_quality 2
     end
 
@@ -90,11 +90,11 @@ class InventoryItem
 
   class LegendaryItem < InventoryItem;
 
-    def do_perform_inventory_rollover
+    def do_inventory_rollover
       # Do nothing
     end
 
-    def do_perform_inventory_expiration
+    def do_inventory_expiration
       # Do nothing
     end
 
@@ -102,12 +102,12 @@ class InventoryItem
 
   class StandardItem < InventoryItem;
 
-    def do_perform_inventory_rollover
+    def do_inventory_rollover
       rollover
       decrease_quality 1
     end
 
-    def do_perform_inventory_expiration
+    def do_inventory_expiration
       decrease_quality 1
     end
 

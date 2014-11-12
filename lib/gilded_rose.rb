@@ -12,8 +12,8 @@ class GildedRose
   private
 
   def update_item_quality(item)
-    item.perform_inventory_rollover
-    item.perform_inventory_expiration
+    item.inventory_rollover
+    item.inventory_expiration
   end
 
 end
