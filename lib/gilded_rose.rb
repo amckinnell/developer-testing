@@ -29,8 +29,7 @@ class GildedRose
       item.increase_quality if item.sell_in < 10
       item.increase_quality if item.sell_in < 5
     when 'Conjured Mana'
-      item.decrease_quality
-      item.decrease_quality
+      item.decrease_quality 2
     else
       item.decrease_quality
     end
@@ -45,8 +44,7 @@ class GildedRose
     when 'Backstage passes to a TAFKAL80ETC concert'
       item.writeoff
     when 'Conjured Mana'
-      item.decrease_quality
-      item.decrease_quality
+      item.decrease_quality 2
     else
       item.decrease_quality
     end
