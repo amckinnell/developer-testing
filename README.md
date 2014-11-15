@@ -29,5 +29,19 @@ If you want to follow along with how I chose to perform the refactoring you can 
   1. `git checkout preparatory_refactoring`
   2. `git checkout item_adaptor_refactoring`
   3. `git checkout replace_case_with_polymorphism`
-  
 
+
+Recommended Reading
+-------------------
+
+Michael Feathers  
+[Working Effectively with Legacy Code](http://www.informit.com/store/working-effectively-with-legacy-code-9780131177055)
+
+Gerard Mezsaros  
+[xUnit Test Patterns](http://www.informit.com/store/xunit-test-patterns-refactoring-test-code-9780131495050)
+
+Nat Pryce  
+[Can Approval Testing and Specification by Example Work Together?](http://www.natpryce.com/articles/000801.html)
+
+Emily Bache    
+[The Coding Dojo Handbook](https://leanpub.com/codingdojohandbook)
