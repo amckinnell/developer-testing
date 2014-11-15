@@ -45,3 +45,6 @@ Nat Pryce
 
 Emily Bache    
 [The Coding Dojo Handbook](https://leanpub.com/codingdojohandbook)
+
+Martin Fowler  
+[Workflows of Refactoring](http://martinfowler.com/articles/workflowsOfRefactoring/)
