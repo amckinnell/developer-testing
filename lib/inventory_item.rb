@@ -40,7 +40,7 @@ class InventoryItem
     do_inventory_expiration if expired?
   end
 
-  class AgedBrie < InventoryItem;
+  class AgedBrie < InventoryItem
 
     def do_inventory_rollover
       increase_quality 1
@@ -52,7 +52,7 @@ class InventoryItem
 
   end
 
-  class BackstagePass < InventoryItem;
+  class BackstagePass < InventoryItem
 
     def do_inventory_rollover
       increase_quality amount
@@ -74,7 +74,7 @@ class InventoryItem
 
   end
 
-  class ConjuredItem < InventoryItem;
+  class ConjuredItem < InventoryItem
 
     def do_inventory_rollover
       decrease_quality 2
@@ -86,7 +86,7 @@ class InventoryItem
 
   end
 
-  class LegendaryItem < InventoryItem;
+  class LegendaryItem < InventoryItem
 
     def do_inventory_rollover
       # Do nothing
@@ -102,7 +102,7 @@ class InventoryItem
 
   end
 
-  class StandardItem < InventoryItem;
+  class StandardItem < InventoryItem
 
     def do_inventory_rollover
       decrease_quality 1
